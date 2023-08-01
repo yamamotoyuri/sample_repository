@@ -1,0 +1,422 @@
+@charset "UTF-8";
+/* reset */
+body, h1, h2, h3, h4, h5, h6, p, address,
+ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+textarea { font-size: 100%; vertical-align:middle;}
+img { border-style: none; display: block; }
+hr { display: none; }
+em{font-style: normal}
+input{line-height:auto;vertical-align:middle;}
+strong.more{color:#c30}
+a{text-decoration: none;}
+
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html{
+	font-size: 0.625rem;
+	scroll-behavior: smooth;
+
+}
+
+body{
+	background-color: #FFEFD5;
+	color: black;
+	font-size: 1.5rem;
+	line-height: 1.7;
+	letter-spacing: .1em;
+}
+
+h1{
+	font-size: 2.5rem;
+}
+
+h2{
+	font-size: 2rem;
+	font-weight: bold;
+	margin: 10px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+header .logo{
+	font-size: 3rem;
+	font-weight: 600;
+	color: black;
+}
+
+header .nav-list{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	padding: 10px 50px 10px 40px;
+	background-color: lightgray;
+}
+
+header .nav-list .nav{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+header .nav-list .nav li{
+	margin: 0 10px;
+}
+
+header .nav-list .nav li a{
+	color: gray;
+}
+
+header .nav-list .nav li a:hover{
+	color: black;
+}
+
+header .nav-list .nav  li .search input{
+	align-items: center;
+	border:  none;
+	height: 30px;
+}
+
+header .hamburger{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50px;
+	height: 50px;
+	cursor: pointer; 
+	border-radius: 3px;	
+	border: .5px solid gray;
+	box-shadow: 2px 2px 2px darkgrey;	
+	transition: 0.5s;
+	display: none;
+	z-index: 100;
+}
+
+header .hamburger.is-active{
+	border: 2px solid orange;
+}
+
+header .hamburger span{
+	display: inline-block;
+	width: 50%;
+	height: 2px;
+	background-color: gray;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+header .hamburger span:nth-of-type(1) {
+	top: 15px;
+}
+
+header .hamburger span:nth-of-type(2) {
+	top: 23px;
+}
+
+header .hamburger span:nth-of-type(3) {
+	top: 31px;
+}
+
+header .hamburger.is-active span:nth-of-type(1) {
+	transform: translate(-11px,8px) rotate(-45deg);
+}
+
+header .hamburger.is-active span:nth-of-type(2) {
+	display: none;
+}
+
+header .hamburger.is-active span:nth-of-type(3) {
+	transform: translate(-11px,-8px) rotate(45deg);
+}
+
+.slider{
+	width: 100%;
+	height: 50vw;
+}
+
+.slider img{
+	width: 100%;
+    height: 50vw;
+    object-fit: cover;
+}
+
+.slick-next::before,
+.slick-next::after,
+.slick-prev::before,
+.slick-prev::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  content: "";
+  vertical-align: middle;
+}
+
+.slick-next::after,
+.slick-prev::after {
+  width: 26px;
+  height: 26px;
+  border-top: 2px solid blue;
+  border-right: 2px solid blue;
+}
+
+.slick-prev{
+	z-index: 1;
+	left: 26px;
+}
+
+.slick-prev::after {
+	left: 4px;
+	transform: rotate(-135deg);
+}
+
+.slick-next{
+	z-index: 1;
+	right: 26px;
+}
+
+.slick-next::after {
+	right: 4px;
+	transform: rotate(45deg);
+}
+
+.wrapper{
+	margin: 0 10vw;
+}
+
+.guide{
+	padding-bottom: 60px;
+}
+
+.guide .list .label{
+	font-size: 2rem;
+	padding: 5px;
+	margin-bottom: 2px;
+	background-color: #FFC7AF;
+	cursor: pointer;
+}
+
+.guide .list .detail{
+	margin: 20px;
+	display: none;
+}
+
+
+.guide .list .detail li{
+	margin-bottom: 10px;
+	list-style: disc;
+}
+
+.menu .item{ 
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 60px;
+	opacity: 0;
+    transform: translate(0, 100px); 
+}
+
+.menu .item.show{
+	opacity: 1;
+	transform: translate(0, 0);
+    transition: all 1s ease;
+}
+
+.menu .item .item_img{
+	width: 50%;	
+}
+.menu .item .item_img img{
+	width: 100%;	
+}
+
+.menu .item  .item_text{
+	width: 40%;
+	margin: 20px;
+}
+
+.address{
+	font-size: 1.4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	margin-bottom: 60px;
+	background-color: black;
+	color: white;
+	opacity: 0;
+    transform: translate(0, 100px); 
+}
+
+.address.show{
+	opacity: 1;
+	transform: translate(0, 0);
+    transition: all 1s ease;
+}
+
+.address .address_text{
+	text-align: left;
+	margin-bottom: 40px;
+}
+
+.address .address_img{
+	width: 40%;
+}
+
+.address .address_img img{
+	width: 100%;
+}
+
+.shop{
+	opacity: 0;
+	transform: translate(0,100px);
+}
+
+.shop.show{
+	opacity: 1;
+	transform: translate(0, 0);
+    transition: all 1s ease;
+}
+
+.shop h2{
+	text-align: center;
+}
+
+.shop .shop_list{
+	display: flex;
+	justify-content: space-between;
+	margin: 40px auto;
+}
+
+.shop .shop_list li img{
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	margin-bottom: 10px;
+	object-fit: cover;
+	margin:  0 auto;
+}
+
+footer{
+	padding: 10px 300px;
+	background-color: darkgray;
+}
+
+footer ul{
+	display: flex;
+	justify-content: space-between;
+}
+
+footer ul li a {
+	font-size: .1rem;
+}
+
+
+@media screen and (max-width:960px) {
+
+h1{
+	font-size: 2rem;
+}
+
+header .nav-list{
+	display: flex;
+	justify-content: space-between;
+	text-align: left;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	padding: 5px;
+	background-color: lightgray;
+	display:block ;
+	flex-wrap: wrap;
+}
+
+header .nav-list .nav{
+	display: none;
+}
+
+header .logo{
+	font-size: 3rem;
+}
+
+header .nav-list .nav li{
+	margin-bottom: 10px;
+}
+
+header .nav-list .nav li a{
+	color: gray;
+}
+
+header .nav-list .nav li a:hover{
+	color: black;
+}
+
+header .hamburger{
+	display: block;
+}
+
+.menu .item{ 
+	margin-bottom: 10px;
+	flex-direction: column;
+}
+
+.menu .item .item_img{
+	width: 100%;	
+}
+
+.menu .item  .item_text{
+	width: 100%;
+	margin: 20px;
+}
+
+.address{
+	flex-direction: column;
+} 
+
+.address .address_img{
+	width: 100%;
+}
+
+.shop{
+	display: none;
+}
+
+footer{
+	padding: 10px 40px;
+	background-color: darkgray;
+}
+	
+}
