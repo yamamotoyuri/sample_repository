@@ -24,7 +24,7 @@ class SelfIntroduction
         string $lastName,
         string $firstName,
         string $age,
-        string $hobby,
+        string $hobby
     ) {
         $this->lastName     = $lastName;
         $this->firstName    = $firstName;
