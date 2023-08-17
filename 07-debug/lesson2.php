@@ -23,7 +23,7 @@ class SelfIntroduction
     public function __construct(
         string $lastName,
         string $firstName,
-        int $age,
+        string $age,
         string $hobby,
     ) {
         $this->lastName     = $lastName;

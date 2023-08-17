@@ -134,7 +134,7 @@ class Battle
 }
 
 if (! empty($_POST)) {
-    $me    = new Me($_POST['last_name'], $_POST['first_name'], $_POST['choice'], $_POST['choice']);
+    $me    = new Me($_POST['last_name'], $_POST['first_name'], $_POST['choice']);
     $enemy = new Enemy();
     echo $me->getName().'は'.$me->getChoice().'を出しました。';
     echo '<br>';
@@ -163,8 +163,7 @@ if (! empty($_POST)) {
         <label>名</label>
         <input type="text" name="first_name" value="<?php echo '太郎'; ?>" />
         <select name='choice'>
-            <option value=0 >--</option>
-            <option value=1 >グー</option>
+           <option value=1 >グー</option>
             <option value=2 >チョキ</option>
             <option value=3 >パー</option>
         </select>
