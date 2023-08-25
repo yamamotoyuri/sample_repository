@@ -48,11 +48,11 @@ SELECT * FROM countries WHERE indep_year < '1990-01-01' OR population > 100000;
 
 -- 問13
 -- コードがDZAもしくはALBかつ独立記念日が1990年より前の国を全て抽出してください。
-SELECT * FROM countries WHERE code='DZA' OR code='ALB' AND indep_year < '1990-01-01';
+SELECT * FROM countries WHERE code='DZA' OR (code='ALB' AND indep_year < '1990-01-01');
 
 -- 問14
 -- 全ての地方をグループ化せずに表示してください。
-SELECT region FROM countries;
+SELECT DISTINCT region FROM countries;
 
 -- 問15
 -- 国名と人口を以下のように表示させてください。シングルクォートに注意してください。
@@ -115,7 +115,7 @@ SELECT celebrities.name, countries.name, countrylanguages.language FROM celebrit
 
 -- 問29
 -- 全ての有名人の名前と国名をに出力してください。 ただしテーブル結合せずサブクエリを使用してください。
-SELECT celebrities.name, countries.name FROM celebrities LEFT OUTER JOIN countries ON celebrities.country_code=countries.code;
+SELECT celebrities.name, ( SELECT countries.name FROM countries WHERE countries.code = celebrities.country_code ) AS country_name FROM celebrities;
 
 -- 問30
 -- 最年長が50歳以上かつ最年少が30歳以下の国を表示させてください。
