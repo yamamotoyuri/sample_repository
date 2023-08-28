@@ -48,7 +48,7 @@ SELECT * FROM countries WHERE indep_year < '1990-01-01' OR population > 100000;
 
 -- 問13
 -- コードがDZAもしくはALBかつ独立記念日が1990年より前の国を全て抽出してください。
-SELECT * FROM countries WHERE code='DZA' OR (code='ALB' AND indep_year < '1990-01-01');
+SELECT * FROM countries WHERE code='DZA' OR code='ALB' AND (indep_year < '1990-01-01');
 
 -- 問14
 -- 全ての地方をグループ化せずに表示してください。
