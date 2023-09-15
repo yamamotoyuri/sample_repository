@@ -2,7 +2,6 @@ const formElements = document.getElementById('contact_form');
 
 formElements.addEventListener('submit', (event)=>{
     event.preventDefault();
-    console.log(123)
 
     const name = formElements.name.value;
     const kana = formElements.kana.value;

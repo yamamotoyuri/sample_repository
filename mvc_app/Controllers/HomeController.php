@@ -8,8 +8,6 @@ class HomeController extends Controller
 {
     public function index(){
 				// この部分を追加
-        session_start();
-        session_destroy();
         $user = new UserController();
         $auth = $user->getAuth();
         $this->view('home/index', ['auth' => $auth]);

@@ -75,6 +75,20 @@ class Contact extends Db
     public function updateContact(string $name, string $kana, string $tel, string $email ,string $body,string $id)
     {
         try{	
+            // 重複アドレスの確認 (メールアドレスが一意のためすでに使用されていた場合はエラーとする)
+            $query = 'SELECT COUNT(*) as count FROM contacts WHERE email = :email AND id <> :id';
+            $stmt = $this->dbh->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+            if($result->count != 0){
+                // メールアドレス検索の結果重複していた場合はfalseを返却
+                return false;
+            }
+            
+            // 重複がない場合は処理を続行
             $this->dbh->beginTransaction();
             $query = 'UPDATE contacts SET name = :name, kana = :kana, tel= :tel, email= :email, body= :body WHERE id =:id';
 
@@ -91,8 +105,9 @@ class Contact extends Db
 
             // トランザクションを完了することでデータの書き込みを確定させる
             $this->dbh->commit();
+        
 
-            return $lastId;
+
         } catch (PDOException $e) {
             // 不具合があった場合トランザクションをロールバックして変更をなかったコトにする。
             $this->dbh->rollBack();

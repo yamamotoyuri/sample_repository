@@ -165,16 +165,14 @@ class ContactController extends Controller
         }
 
 
-        
+        session_start();
+
         if(!empty($errorMessages)){
             // バリデーション失敗
-            session_start();
             $_SESSION['errorMessages']=$errorMessages;
             $_SESSION['post']=$_POST;
             $this->view('contact/edit',['errorMessages'=>$errorMessages ,'result'=>$_POST]); 
         }else{
-            session_start();
-
             //登録処理
             $contact = new Contact;
             $result = $contact->updateContact(
@@ -187,81 +185,17 @@ class ContactController extends Controller
            
             );
             header('Location: /contact/index');
-            var_dump($result);
         }
     }
 
 
     public function delete(){
-        session_start();
         $id = $_GET['id'];
         $_SESSION['id'] =$id;  
         if($id){
             $delete = new Contact;
             $result = $delete->deleteContactAccount($id);
-            $this->view('contact/index',['contact_list' => $result]);
             header('Location: /contact/index');
         } 
     }
 }
-
-
-        
-
-
-        
-
-        
-    
-        
-
-        
-        
-
-
-        
-
-        
-        
-    
-    
-
-
-  
-    
-
-
-
-
-    
-    
-
-
- 
-
-
-    
-     
-        
-
-    
-        
-        
-        
-
-        
-    
-
-        
-        
-
-        
-
-   
-    
-        
-            
-
-    
-
-
