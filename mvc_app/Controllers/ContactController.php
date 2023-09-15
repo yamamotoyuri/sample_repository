@@ -191,7 +191,6 @@ class ContactController extends Controller
 
     public function delete(){
         $id = $_GET['id'];
-        $_SESSION['id'] =$id;  
         if($id){
             $delete = new Contact;
             $result = $delete->deleteContactAccount($id);
