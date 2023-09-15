@@ -71,13 +71,9 @@ class Contact extends Db
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
-            $lastId = $this->dbh->lastInsertId();
-
             // トランザクションを完了することでデータの書き込みを確定させる
             $this->dbh->commit();
         
-
-
         } catch (PDOException $e) {
             // 不具合があった場合トランザクションをロールバックして変更をなかったコトにする。
             $this->dbh->rollBack();
